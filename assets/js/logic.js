@@ -88,11 +88,11 @@ startButton.addEventListener('click',function(event){
             userChoice[i].addEventListener('click',function(event){
                 if (userChoice[i].textContent === quiz[0].correctAnswer){
                     paraEl.innerText = "Correct. Congratulations!"
-                    questions.append(pEl); 
-                } else {
+                    } else {
                     paraEl.innerText = "Wrong!"
                 }
                 questions.appendChild(paraEl); // Put the p element to the end of id "questions"
+                setTime(paraEl);
             })
 
         }
@@ -110,3 +110,14 @@ function questions(){
 
 //Store the lists of questions in an array, or object, with each question is an object
 // Each question has 
+
+function setTime(i){
+    var secondLeft = 5;
+    var timeInterval = setInterval(function(){
+        secondLeft--;
+        if (secondLeft === 0){
+            clearInterval();
+            i.style.display = 'none';
+        }
+    },1000)
+}
