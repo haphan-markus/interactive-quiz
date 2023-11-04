@@ -74,57 +74,61 @@ startButton.addEventListener('click',function(event){
     questions.setAttribute('class',questionState);
     
     // Show questions
-    // for (let i = 0; i < quizLength; i++){
+    var i = 0;
+    document.createElement('ol');
+    questionTitle.textContent = quiz[i].input;
+    choice1.textContent = quiz[i].option1;
+    choice2.textContent = quiz[i].option2;
+    choice3.textContent = quiz[i].option3;
+    choice4.textContent = quiz[i].option4;
+    console.log(choice1);
+    var userChoice = [choice1, choice2, choice3, choice4];
+    for (let j = 0; j<userChoice.length; j++){
+        var paraEl = document.createElement('p');
+        userChoice[j].addEventListener('click',function(event){
+            if (userChoice[j].textContent === quiz[i].correctAnswer){
+                paraEl.innerText = "Correct. Congratulations!"
+                } else {
+                paraEl.innerText = "Wrong!"
+            }
+            questions.appendChild(paraEl); // Put the p element to the end of id "questions"
+            setTime(paraEl);
+            //Upon clicking, the next question will appear
+            i++;
+            console.log(i);
+        })
+    }
         // questionTitle.textContent = quiz[0].input;
         // choice1.textContent = quiz[0].option1;
         // choice2.textContent = quiz[0].option2;
         // choice3.textContent = quiz[0].option3;
         // choice4.textContent = quiz[0].option4;
         // console.log(choice1);
-        // // Check if the option chosen is correct: return "Correct. Congratulations!" if correct, and return "Wrong!" for others
-        // var userChoice = [choice1, choice2, choice3, choice4];
-        // for (let i = 0; i<userChoice.length; i++){
-        //     var paraEl = document.createElement('p');
-        //     userChoice[i].addEventListener('click',function(event){
-        //         if (userChoice[i].textContent === quiz[0].correctAnswer){
-        //             paraEl.innerText = "Correct. Congratulations!"
-        //             } else {
-        //             paraEl.innerText = "Wrong!"
-        //         }
-        //         questions.appendChild(paraEl); // Put the p element to the end of id "questions"
-        //         setTime(paraEl);
-        //         //Upon clicking, the next question will appear
-        //         questionTitle.textContent = quiz[1].input;
-        //         choice1.textContent = quiz[1].option1;
-        //         choice2.textContent = quiz[1].option2;
-        //         choice3.textContent = quiz[1].option3;
-        //         choice4.textContent = quiz[1].option4;
-        //         console.log(choice1);
-        //     })
-
-        // }
+        // Check if the option chosen is correct: return "Correct. Congratulations!" if correct, and return "Wrong!" for others
         
-        for (let i = 0; i < quiz.length;i++){
-            questionTitle.textContent = quiz[i].input;
-            choice1.textContent = quiz[i].option1;
-            choice2.textContent = quiz[i].option2;
-            choice3.textContent = quiz[i].option3;
-            choice4.textContent = quiz[i].option4;
-            console.log(choice1);
-            var userChoice = [choice1, choice2, choice3, choice4];
-            for (let j = 0; j<userChoice.length; j++){
-                var paraEl = document.createElement('p');
-                userChoice[j].addEventListener('click',function(event){
-                    if (userChoice[j].textContent === quiz[i].correctAnswer){
-                        paraEl.innerText = "Correct. Congratulations!"
-                        } else {
-                        paraEl.innerText = "Wrong!"
-                        }
-                    questions.appendChild(paraEl); // Put the p element to the end of id "questions"
-                    setTime(paraEl);
-                    })
-            }
-        }
+        
+        
+        // for (let i = 0; i < quiz.length;i++){
+        //     questionTitle.textContent = quiz[i].input;
+        //     choice1.textContent = quiz[i].option1;
+        //     choice2.textContent = quiz[i].option2;
+        //     choice3.textContent = quiz[i].option3;
+        //     choice4.textContent = quiz[i].option4;
+        //     console.log(choice1);
+        //     var userChoice = [choice1, choice2, choice3, choice4];
+        //     for (let j = 0; j<userChoice.length; j++){
+        //         var paraEl = document.createElement('p');
+        //         userChoice[j].addEventListener('click',function(event){
+        //             if (userChoice[j].textContent === quiz[i].correctAnswer){
+        //                 paraEl.innerText = "Correct. Congratulations!"
+        //                 } else {
+        //                 paraEl.innerText = "Wrong!"
+        //                 }
+        //             questions.appendChild(paraEl); // Put the p element to the end of id "questions"
+        //             setTime(paraEl);
+        //             })
+        //     }
+        // }
     // }
     
 
@@ -132,7 +136,13 @@ startButton.addEventListener('click',function(event){
 
 // Upon clicking the Start button, it will prompt to the questions function
 
-function questions(){
+function showQuestions(i){
+    questionTitle.textContent = quiz[i].input;
+    choice1.textContent = quiz[i].option1;
+    choice2.textContent = quiz[i].option2;
+    choice3.textContent = quiz[i].option3;
+    choice4.textContent = quiz[i].option4;
+    console.log(choice1);
 }
 
 //Store the lists of questions in an array, or object, with each question is an object
