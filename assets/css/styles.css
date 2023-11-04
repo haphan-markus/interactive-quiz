@@ -58,9 +58,10 @@ li:nth-child(odd) {
   max-width: 600px;
 }
 
+/* This sets every elements with class="hide" to disappeare */
 .hide {
   display: none;
-}
+} 
 
 .start {
   text-align: center;

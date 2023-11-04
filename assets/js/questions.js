@@ -51,7 +51,15 @@ var questionCatalogue = [
 
 
 startButton.addEventListener('click',function(event){
-    startScreen.style.display = 'none';
+    // startScreen.style.display = 'none';
+    var state = startScreen.getAttribute('data-state');
+    console.log(state);
+    var classShown = startScreen.getAttribute('class');
+    console.log(classShown);
+    startScreen.setAttribute("class",state);
+    startScreen.setAttribute("data-state",classShown);
+
+    
     questionTitle.style.display = 'compact';
     questionTitle.textContent = questionCatalogue[0].input;
 });
