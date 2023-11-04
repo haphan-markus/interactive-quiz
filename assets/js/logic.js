@@ -80,6 +80,23 @@ startButton.addEventListener('click',function(event){
         choice2.textContent = quiz[0].option2;
         choice3.textContent = quiz[0].option3;
         choice4.textContent = quiz[0].option4;
+        console.log(choice1);
+        // Check if the option chosen is correct: return "Correct. Congratulations!" if correct, and return "Wrong!" for others
+        var userChoice = [choice1, choice2, choice3, choice4];
+        for (let i = 0; i<userChoice.length; i++){
+            var paraEl = document.createElement('p');
+            userChoice[i].addEventListener('click',function(event){
+                if (userChoice[i].textContent === quiz[0].correctAnswer){
+                    paraEl.innerText = "Correct. Congratulations!"
+                    questions.append(pEl); 
+                } else {
+                    paraEl.innerText = "Wrong!"
+                }
+                questions.appendChild(paraEl); // Put the p element to the end of id "questions"
+            })
+
+        }
+        
     // }
     
 
