@@ -19,11 +19,11 @@ var quiz = [
         correctAnswer: "2. while (i<=10)"
     }, {
         input: "3. Inside which HTML element do we put the JavaScript?",
-        option1: "1. <JavaScript>",
-        option2: "2. <scripting>",
-        option3: "3. <script>",
-        option4: "4. <js>",
-        correctAnswer: "3. <script>"
+        option1: "1. '<JavaScript>'",
+        option2: "2. '<scripting>'",
+        option3: "3. '<script>'",
+        option4: "4. '<js>'",
+        correctAnswer: "3. '<script>'"
     }, {
         input: "4. How do you create a function in JavaScript?",
         option1: "function myFunction()",
@@ -49,9 +49,10 @@ var quiz = [
 ]
 
 for (let i = 0;i < quiz.length;i++){
-    var olEl = document.createElement('ol');
-    questionTitle.appendChild(olEl);
-    olEl.setAttribute('id','question'+i);
+    var paraEl = document.createElement('p');
+    questionTitle.appendChild(paraEl);
+    paraEl.setAttribute('id','question'+i);
+    paraEl.innerHTML = quiz[i].input;
     
     var choice1 = document.createElement('button');
     var choice2 = document.createElement('button');
@@ -59,13 +60,17 @@ for (let i = 0;i < quiz.length;i++){
     var choice4 = document.createElement('button');
     choices.appendChild(choice1);
     choice1.setAttribute('id','choice1-'+i);
+    choice1.innerHTML = quiz[i].option1;
     
     choices.appendChild(choice2);
     choice2.setAttribute('id','choice2-'+i);
+    choice2.innerHTML = quiz[i].option2;
     
     choices.appendChild(choice3);
     choice3.setAttribute('id','choice3-'+i);
+    choice3.innerHTML = quiz[i].option3;
 
     choices.appendChild(choice4);
     choice4.setAttribute('id','choice4-'+i);
+    choice4.innerHTML = quiz[i].option4;
 }
