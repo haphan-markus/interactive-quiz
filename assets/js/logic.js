@@ -10,8 +10,8 @@ console.log(quizLength);
 startButton.addEventListener('click',function(event){
     // Hide start-screen div
     var startScreenState = startScreen.getAttribute('data-state');
-    console.log(startScreenState);
     var startScreenClass = startScreen.getAttribute('class');
+    console.log(startScreenState);
     console.log(startScreenClass);
     startScreen.setAttribute("class",startScreenState);
     startScreen.setAttribute("data-state",startScreenClass);
@@ -31,24 +31,29 @@ startButton.addEventListener('click',function(event){
     var button10 = document.createElement('button');
     button10.innerHTML = quiz[0].option1;
     choices.append(button10);
-    button10.setAttribute('id','button10');
+    button10.setAttribute('data-state','bttnOption');
         
     var button20 = document.createElement('button');
     button20.innerHTML = quiz[0].option2;
     choices.append(button20);
+    button20.setAttribute('data-state','bttnOption');
 
     var button30 = document.createElement('button');
     button30.innerHTML = quiz[0].option3;
     choices.append(button30);
+    button30.setAttribute('data-state','bttnOption');
     
     var button40 = document.createElement('button');
     button40.innerHTML = quiz[0].option4;
     choices.append(button40);
+    button40.setAttribute('data-state','bttnOption');
 
-    for (let j = 0; j<userChoice.length; j++){
+    var userChoice = [button10, button20, button30, button40];
+    
+    for (let j = 0; j < userChoice.length; j++){
         var paraEl = document.createElement('p');
         userChoice[j].addEventListener('click',function(event){
-            if (userChoice[j].textContent === quiz[i].correctAnswer){
+            if (userChoice[j].textContent === quiz[0].correctAnswer){
                 paraEl.innerText = "Correct. Congratulations!"
                 } else {
                 paraEl.innerText = "Wrong!"
@@ -56,8 +61,7 @@ startButton.addEventListener('click',function(event){
             questions.appendChild(paraEl); // Put the p element to the end of id "questions"
             setTime(paraEl);
             //Upon clicking, the next question will appear
-            i++;
-            console.log(i);
+            
         })
     }
         // questionTitle.textContent = quiz[0].input;
