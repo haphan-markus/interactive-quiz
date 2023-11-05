@@ -34,7 +34,9 @@ startButton.addEventListener('click',function(event){
     
     var button10 = document.createElement('button');
     button10.innerHTML = choice10.innerHTML;
-    choice10.append(button10);
+    choice10.parentNode.insertBefore(button10,choice10);
+    choice10.setAttribute('class','hide');
+    // choice10.append(button10);
     // choice10.remove();
 
     choice10.setAttribute('class','start');
