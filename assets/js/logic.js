@@ -103,6 +103,7 @@ function answerQuestion(event){
                 questions.setAttribute('class','hide');
                 clearInterval(timeInterval);
                 finalScore.innerHTML = timeLeft;
+                time.innerHTML = timeLeft;
                 console.log("Final value of timeleft: " + timeLeft);
                 return;
             }
@@ -116,7 +117,7 @@ function answerQuestion(event){
     }
     
 };
-
+console.log(startButton.addEventListener('click',answerQuestion));
 // Function to set time of the notice "Wrong!" or "Correct. Congratulations!" if their answer is correct or not
 function setTime(i){
     var secondLeft = 2;
