@@ -27,22 +27,23 @@ startButton.addEventListener('click',function(event){
     // Show questions
     var question0 = document.getElementById('question0');
     question0.setAttribute('class','start');
-    var choice10 = document.getElementById('choice1-0');
-    var choice20 = document.getElementById('choice2-0');
-    var choice30 = document.getElementById('choice3-0');
-    var choice40 = document.getElementById('choice4-0');
     
     var button10 = document.createElement('button');
-    button10.innerHTML = choice10.innerHTML;
-    choice10.parentNode.insertBefore(button10,choice10);
-    choice10.setAttribute('class','hide');
-    // choice10.append(button10);
-    // choice10.remove();
+    button10.innerHTML = quiz[0].option1;
+    choices.append(button10);
+    button10.setAttribute('id','button10');
+        
+    var button20 = document.createElement('button');
+    button20.innerHTML = quiz[0].option2;
+    choices.append(button20);
 
-    choice10.setAttribute('class','start');
-    choice20.setAttribute('class','start');
-    choice30.setAttribute('class','start');
-    choice40.setAttribute('class','start');
+    var button30 = document.createElement('button');
+    button30.innerHTML = quiz[0].option3;
+    choices.append(button30);
+    
+    var button40 = document.createElement('button');
+    button40.innerHTML = quiz[0].option4;
+    choices.append(button40);
 
     for (let j = 0; j<userChoice.length; j++){
         var paraEl = document.createElement('p');
