@@ -31,6 +31,12 @@ startButton.addEventListener('click',function(event){
     var choice20 = document.getElementById('choice2-0');
     var choice30 = document.getElementById('choice3-0');
     var choice40 = document.getElementById('choice4-0');
+    
+    var button10 = document.createElement('button');
+    button10.innerHTML = choice10.innerHTML;
+    choice10.append(button10);
+    // choice10.remove();
+
     choice10.setAttribute('class','start');
     choice20.setAttribute('class','start');
     choice30.setAttribute('class','start');
