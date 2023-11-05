@@ -47,36 +47,3 @@ var quiz = [
         correctAnswer: "if (i != 5)"
     }
 ]
-
-for (let i = 0;i < quiz.length;i++){
-    var paraEl = document.createElement('p');
-    questionTitle.appendChild(paraEl);
-    paraEl.setAttribute('id','question'+i);
-    paraEl.setAttribute('class','hide');
-    paraEl.setAttribute('data-state','show');
-    paraEl.innerHTML = quiz[i].input;
-    
-    var choice1 = document.createElement('p');
-    var choice2 = document.createElement('p');
-    var choice3 = document.createElement('p');
-    var choice4 = document.createElement('p');
-    // choices.appendChild(choice1);
-    // choice1.setAttribute('id','choice1-'+i);
-    // choice1.setAttribute('class','hide');
-    // choice1.innerHTML = quiz[i].option1;
-    
-    // choices.appendChild(choice2);
-    // choice2.setAttribute('id','choice2-'+i);
-    // choice2.setAttribute('class','hide');
-    // choice2.innerHTML = quiz[i].option2;
-    
-    // choices.appendChild(choice3);
-    // choice3.setAttribute('id','choice3-'+i);
-    // choice3.setAttribute('class','hide');
-    // choice3.innerHTML = quiz[i].option3;
-
-    // choices.appendChild(choice4);
-    // choice4.setAttribute('id','choice4-'+i);
-    // choice4.setAttribute('class','hide');
-    // choice4.innerHTML = quiz[i].option4;
-}

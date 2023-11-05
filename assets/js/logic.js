@@ -5,7 +5,7 @@ var questionTitle = document.getElementById("question-title");
 var choices = document.getElementById("choices");
 
 var quizLength = quiz.length;
-console.log(quizLength);
+console.log("Total number of questions in the quiz: " + quizLength);
 
 startButton.addEventListener('click',function(event){
     // Hide start-screen div
@@ -75,19 +75,6 @@ startButton.addEventListener('click',function(event){
         })
     }
 });
-
-// Upon clicking the Start button, it will prompt to the questions function
-function showQuestion(i){
-    var question = document.createElement('p');
-    question.innerHTML = quiz[i].input;
-    questionTitle.append(question);
-    question.setAttribute('class','start');
-    return question;
-}
-
-function showOption(){
-    
-}
 
 function setTime(i){
     var secondLeft = 3;
