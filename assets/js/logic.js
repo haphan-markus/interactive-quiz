@@ -25,35 +25,39 @@ startButton.addEventListener('click',function(event){
     questions.setAttribute('class',questionState);
     
     // Show questions
-    var question0 = document.getElementById('question0');
-    question0.setAttribute('class','start');
+    var userQuestion = document.createElement('p');
+    userQuestion.innerHTML = quiz[0].input;
+    questionTitle.append(userQuestion);
+    userQuestion.setAttribute('class','start');
     
-    var button10 = document.createElement('button');
-    button10.innerHTML = quiz[0].option1;
-    choices.append(button10);
-    button10.setAttribute('data-state','bttnOption');
+    var button1 = document.createElement('button');
+    button1.innerHTML = quiz[0].option1;
+    choices.append(button1);
+    button1.setAttribute('data-state','bttnOption');
         
-    var button20 = document.createElement('button');
-    button20.innerHTML = quiz[0].option2;
-    choices.append(button20);
-    button20.setAttribute('data-state','bttnOption');
+    var button2 = document.createElement('button');
+    button2.innerHTML = quiz[0].option2;
+    choices.append(button2);
+    button2.setAttribute('data-state','bttnOption');
 
-    var button30 = document.createElement('button');
-    button30.innerHTML = quiz[0].option3;
-    choices.append(button30);
-    button30.setAttribute('data-state','bttnOption');
+    var button3 = document.createElement('button');
+    button3.innerHTML = quiz[0].option3;
+    choices.append(button3);
+    button3.setAttribute('data-state','bttnOption');
     
-    var button40 = document.createElement('button');
-    button40.innerHTML = quiz[0].option4;
-    choices.append(button40);
-    button40.setAttribute('data-state','bttnOption');
+    var button4 = document.createElement('button');
+    button4.innerHTML = quiz[0].option4;
+    choices.append(button4);
+    button4.setAttribute('data-state','bttnOption');
 
-    var userChoice = [button10, button20, button30, button40];
-    
+    var k = 0;
+    var i = 0;
+    var userChoice = [button1, button2, button3, button4];
     for (let j = 0; j < userChoice.length; j++){
-        var paraEl = document.createElement('p');
+        let paraEl = document.createElement('p');
+        
         userChoice[j].addEventListener('click',function(event){
-            if (userChoice[j].textContent === quiz[0].correctAnswer){
+            if (userChoice[j].textContent === quiz[k].correctAnswer){
                 paraEl.innerText = "Correct. Congratulations!"
                 } else {
                 paraEl.innerText = "Wrong!"
@@ -61,58 +65,29 @@ startButton.addEventListener('click',function(event){
             questions.appendChild(paraEl); // Put the p element to the end of id "questions"
             setTime(paraEl);
             //Upon clicking, the next question will appear
-            
+            k ++;
+            console.log(k);
+            button1.textContent = quiz[k].option1;
+            button2.textContent = quiz[k].option2;
+            button3.textContent = quiz[k].option3;
+            button4.textContent = quiz[k].option4;
+            userQuestion.textContent = quiz[k].input;
         })
     }
-        // questionTitle.textContent = quiz[0].input;
-        // choice1.textContent = quiz[0].option1;
-        // choice2.textContent = quiz[0].option2;
-        // choice3.textContent = quiz[0].option3;
-        // choice4.textContent = quiz[0].option4;
-        // console.log(choice1);
-        // Check if the option chosen is correct: return "Correct. Congratulations!" if correct, and return "Wrong!" for others
-        
-        
-        
-        // for (let i = 0; i < quiz.length;i++){
-        //     questionTitle.textContent = quiz[i].input;
-        //     choice1.textContent = quiz[i].option1;
-        //     choice2.textContent = quiz[i].option2;
-        //     choice3.textContent = quiz[i].option3;
-        //     choice4.textContent = quiz[i].option4;
-        //     console.log(choice1);
-        //     var userChoice = [choice1, choice2, choice3, choice4];
-        //     for (let j = 0; j<userChoice.length; j++){
-        //         var paraEl = document.createElement('p');
-        //         userChoice[j].addEventListener('click',function(event){
-        //             if (userChoice[j].textContent === quiz[i].correctAnswer){
-        //                 paraEl.innerText = "Correct. Congratulations!"
-        //                 } else {
-        //                 paraEl.innerText = "Wrong!"
-        //                 }
-        //             questions.appendChild(paraEl); // Put the p element to the end of id "questions"
-        //             setTime(paraEl);
-        //             })
-        //     }
-        // }
-    // }
-    
-
 });
 
 // Upon clicking the Start button, it will prompt to the questions function
-
-function showQuestions(i){
-    questionTitle.textContent = quiz[i].input;
-    choice1.textContent = quiz[i].option1;
-    choice2.textContent = quiz[i].option2;
-    choice3.textContent = quiz[i].option3;
-    choice4.textContent = quiz[i].option4;
-    console.log(choice1);
+function showQuestion(i){
+    var question = document.createElement('p');
+    question.innerHTML = quiz[i].input;
+    questionTitle.append(question);
+    question.setAttribute('class','start');
+    return question;
 }
 
-//Store the lists of questions in an array, or object, with each question is an object
-// Each question has 
+function showOption(){
+    
+}
 
 function setTime(i){
     var secondLeft = 3;
