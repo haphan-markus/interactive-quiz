@@ -4,12 +4,13 @@ var questions = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
 var choices = document.getElementById("choices");
 var endScreen = document.getElementById("end-screen");
+var finalScore = document.getElementById("final-score");
 
 var quizLength = quiz.length;
 console.log("Total number of questions in the quiz: " + quizLength);
 
 // Show time left for answering and show countdown
-var timeLeft = 10;
+var timeLeft = 120;
 var time = document.querySelector('#time');
 time.innerHTML = timeLeft;
 
@@ -23,14 +24,10 @@ function answerQuestion(event){
         if (timeLeft === 0){
             // Stop execution of time countdown
             clearInterval(timeInterval);
+            return;
         }
     },1000);
-    
-    // if (timeLeft === 0){
-    //     // Stop execution of time countdown
-    //     clearInterval(timeInterval);
-    // }
-    
+
     // Hide start-screen div
     var startScreenState = startScreen.getAttribute('data-state');
     var startScreenClass = startScreen.getAttribute('class');
@@ -105,6 +102,8 @@ function answerQuestion(event){
                 endScreen.setAttribute('data-state','hide');
                 questions.setAttribute('class','hide');
                 clearInterval(timeInterval);
+                finalScore.innerHTML = timeLeft;
+                console.log("Final value of timeleft: " + timeLeft);
                 return;
             }
             
@@ -115,9 +114,6 @@ function answerQuestion(event){
             userQuestion.textContent = quiz[k].input;
         })
     }
-    console.log("Final value of k: " + k);
-    
-    
     
 };
 
