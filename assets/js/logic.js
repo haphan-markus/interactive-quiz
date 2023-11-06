@@ -5,6 +5,8 @@ var questionTitle = document.getElementById("question-title");
 var choices = document.getElementById("choices");
 var endScreen = document.getElementById("end-screen");
 var finalScore = document.getElementById("final-score");
+var submitButton = document.getElementById("submit");
+var initials = document.getElementById("initials");
 
 var quizLength = quiz.length;
 console.log("Total number of questions in the quiz: " + quizLength);
@@ -105,7 +107,15 @@ function answerQuestion(event){
             button4.textContent = quiz[k].option4;
         })
     })
+
+    submitButton.addEventListener('click',function(event){
+        event.preventDefault();
+        var names = initials.value.trim();
+        console.log(names);
+        localStorage.setItem("names", JSON.stringify(names));
+    });
 };
+
 
 // Function to set time of the notice "Wrong!" or "Correct. Congratulations!" if their answer is correct or not
 function setTime(i){
