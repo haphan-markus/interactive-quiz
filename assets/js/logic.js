@@ -27,22 +27,12 @@ function answerQuestion(event){
             return;
         }
     },1000);
-
     // Hide start-screen div
-    var startScreenState = startScreen.getAttribute('data-state');
-    var startScreenClass = startScreen.getAttribute('class');
-    console.log(startScreenState);
-    console.log(startScreenClass);
-    startScreen.setAttribute("class",startScreenState);
-    startScreen.setAttribute("data-state",startScreenClass);
-
-    // Show div "questions" 
-    var questionState = questions.getAttribute('data-state');
-    var questionClass = questions.getAttribute('class');
-    console.log(questionState);
-    console.log(questionClass);
-    questions.setAttribute('data-state',questionClass);
-    questions.setAttribute('class',questionState);
+    startScreen.setAttribute("class",'hide');
+    startScreen.setAttribute("data-state",'start');
+    // Show questions div
+    questions.setAttribute('data-state','hide');
+    questions.setAttribute('class','start');
     
     // Show questions
     var userQuestion = document.createElement('p');// Display the question from quiz
@@ -118,6 +108,7 @@ function answerQuestion(event){
     
 };
 console.log(startButton.addEventListener('click',answerQuestion));
+
 // Function to set time of the notice "Wrong!" or "Correct. Congratulations!" if their answer is correct or not
 function setTime(i){
     var secondLeft = 2;
