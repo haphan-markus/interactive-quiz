@@ -85,6 +85,7 @@ function answerQuestion(event){
                 console.log("Total wrong answers: " + wrongAnswer);
             }
             questions.appendChild(paraEl); // Put the "p" element to the end of id "questions"
+            // paraEl.setAttribute('class','feedback');
             setTime(paraEl);
             // Increase the value of k to switch to new Question
             k ++;
@@ -122,7 +123,7 @@ function answerQuestion(event){
 // Function to set time of the notice "Wrong!" or "Correct. Congratulations!" if their answer is correct or not
 function setTime(i){
     var secondLeft = 1;
-    i.setAttribute('class','');
+    i.setAttribute('class','feedback');
     setInterval(function(){
         secondLeft--;
         if (secondLeft === 0){
