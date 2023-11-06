@@ -9,6 +9,12 @@ var finalScore = document.getElementById("final-score");
 var quizLength = quiz.length;
 console.log("Total number of questions in the quiz: " + quizLength);
 
+var userQuestion = document.createElement('p');
+var button1 = document.createElement('button');
+var button2 = document.createElement('button');
+var button3 = document.createElement('button');
+var button4 = document.createElement('button');
+
 // Show time left for answering and show countdown
 var timeLeft = 120;
 var time = document.querySelector('#time');
@@ -29,33 +35,31 @@ function answerQuestion(event){
     },1000);
     // Hide start-screen div
     startScreen.setAttribute("class",'hide');
-    startScreen.setAttribute("data-state",'start');
+    
     // Show questions div
-    questions.setAttribute('data-state','hide');
     questions.setAttribute('class','start');
     
-    // Show questions
-    var userQuestion = document.createElement('p');// Display the question from quiz
+    // Display the question from quiz
     userQuestion.innerHTML = quiz[0].input;
     questionTitle.append(userQuestion);
     userQuestion.setAttribute('class','start');
     
-    var button1 = document.createElement('button');// Create button for option 1 and insert content
+    // Create button for option 1 and insert content
     button1.innerHTML = quiz[0].option1;
     choices.append(button1);
     button1.setAttribute('data-state','bttnOption');
         
-    var button2 = document.createElement('button');// Create button for option 2 and insert content
+    // Create button for option 2 and insert content
     button2.innerHTML = quiz[0].option2;
     choices.append(button2);
     button2.setAttribute('data-state','bttnOption');
 
-    var button3 = document.createElement('button');// Create button for option 3 and insert content
+    // Create button for option 3 and insert content
     button3.innerHTML = quiz[0].option3;
     choices.append(button3);
     button3.setAttribute('data-state','bttnOption');
     
-    var button4 = document.createElement('button');// Create button for option 4 and insert content
+    // Create button for option 4 and insert content
     button4.innerHTML = quiz[0].option4;
     choices.append(button4);
     button4.setAttribute('data-state','bttnOption');
@@ -63,7 +67,6 @@ function answerQuestion(event){
     var k = 0; // k indicates the question number in "quiz" array
     var correctAnswer = 0;
     var wrongAnswer = 0;
-    var i = 0; 
     var userChoice = [button1, button2, button3, button4];
     
     for (let j = 0; j < userChoice.length; j++){
@@ -86,10 +89,9 @@ function answerQuestion(event){
             k ++;
             console.log(k);
             // Add if conditional statement to break this loop when all questions have been shown and answered
-            // The "questions" div will be hiden, and the "end-screen" div is shown.
+            // The "questions" div is hiden, and the "end-screen" div is shown.
             if (k === quizLength) {
                 endScreen.setAttribute('class','start');
-                endScreen.setAttribute('data-state','hide');
                 questions.setAttribute('class','hide');
                 clearInterval(timeInterval);
                 finalScore.innerHTML = timeLeft;
@@ -97,21 +99,19 @@ function answerQuestion(event){
                 console.log("Final value of timeleft: " + timeLeft);
                 return;
             }
-            
+            userQuestion.textContent = quiz[k].input;
             button1.textContent = quiz[k].option1;
             button2.textContent = quiz[k].option2;
             button3.textContent = quiz[k].option3;
             button4.textContent = quiz[k].option4;
-            userQuestion.textContent = quiz[k].input;
         })
     }
-    
 };
 console.log(startButton.addEventListener('click',answerQuestion));
 
 // Function to set time of the notice "Wrong!" or "Correct. Congratulations!" if their answer is correct or not
 function setTime(i){
-    var secondLeft = 2;
+    var secondLeft = 1;
     i.setAttribute('class','');
     setInterval(function(){
         secondLeft--;
