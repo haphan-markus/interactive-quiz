@@ -97,6 +97,7 @@ function answerQuestion(event){
                 clearInterval(timeInterval);
                 finalScore.innerHTML = timeLeft;
                 time.innerHTML = timeLeft;
+                localStorage.setItem("result", timeLeft);
                 console.log("Final value of timeleft: " + timeLeft);
                 return;
             }
@@ -113,6 +114,7 @@ function answerQuestion(event){
         var names = initials.value.trim();
         console.log(names);
         localStorage.setItem("names", JSON.stringify(names));
+        window.open('highscores.html');
     });
 };
 

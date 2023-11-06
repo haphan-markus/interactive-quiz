@@ -1,7 +1,3 @@
-var questions = document.getElementById('questions');
-var questionTitle = document.getElementById("question-title");
-var choices = document.getElementById("choices");
-
 var quiz = [
     {
         input: "1. Common used data type DO NOT include:",
