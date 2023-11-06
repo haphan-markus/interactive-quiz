@@ -68,12 +68,11 @@ function answerQuestion(event){
     var correctAnswer = 0;
     var wrongAnswer = 0;
     var userChoice = [button1, button2, button3, button4];
+    var paraEl = document.createElement('p');
     
-    for (let j = 0; j < userChoice.length; j++){
-        let paraEl = document.createElement('p');
-        
-        userChoice[j].addEventListener('click',function(event){
-            if (userChoice[j].textContent === quiz[k].correctAnswer){
+    userChoice.forEach(function(elem){
+        elem.addEventListener('click',function(){
+            if (elem.textContent === quiz[k].correctAnswer){
                 paraEl.innerText = "Correct. Congratulations!"
                 correctAnswer ++;
                 console.log('Total correct answers:' + correctAnswer);
@@ -105,9 +104,8 @@ function answerQuestion(event){
             button3.textContent = quiz[k].option3;
             button4.textContent = quiz[k].option4;
         })
-    }
+    })
 };
-console.log(startButton.addEventListener('click',answerQuestion));
 
 // Function to set time of the notice "Wrong!" or "Correct. Congratulations!" if their answer is correct or not
 function setTime(i){
