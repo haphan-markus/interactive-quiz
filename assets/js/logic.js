@@ -71,6 +71,8 @@ function answerQuestion(event){
     var wrongAnswer = 0;
     var userChoice = [button1, button2, button3, button4];
     var paraEl = document.createElement('p');
+    var userRecordName = [];
+    var userRecordResult = [];
     
     userChoice.forEach(function(elem){
         elem.addEventListener('click',function(){
@@ -98,6 +100,7 @@ function answerQuestion(event){
                 clearInterval(timeInterval);
                 finalScore.innerHTML = timeLeft;
                 time.innerHTML = timeLeft;
+                userRecordResult.push(timeLeft);
                 localStorage.setItem("result", timeLeft);
                 console.log("Final value of timeleft: " + timeLeft);
                 return;
@@ -112,9 +115,19 @@ function answerQuestion(event){
 
     submitButton.addEventListener('click',function(event){
         event.preventDefault();
+        var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
         var names = initials.value.trim();
         console.log(names);
-        localStorage.setItem("names", JSON.stringify(names));
+        
+        var NewScore = {
+            score: timeLeft,
+            initials: names
+        };
+        
+        highscores.push(NewScore);
+        // userRecordName.push(names);
+        
+        localStorage.setItem("highscores", JSON.stringify(highscores));
         window.open('highscores.html');
     });
 };
