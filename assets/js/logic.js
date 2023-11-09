@@ -7,9 +7,9 @@ var endScreen = document.getElementById("end-screen");
 var finalScore = document.getElementById("final-score");
 var submitButton = document.getElementById("submit");
 var initials = document.getElementById("initials");
+var feedback = document.getElementById("feedback");
 
 var quizLength = quiz.length;
-console.log("Total number of questions in the quiz: " + quizLength);
 
 var userQuestion = document.createElement('p');
 var button1 = document.createElement('button');
@@ -30,8 +30,7 @@ function answerQuestion(event){
         timeLeft--;
         time.innerHTML = timeLeft;
         if (timeLeft === 0){
-            // Stop execution of time countdown
-            clearInterval(timeInterval);
+            clearInterval(timeInterval); // Stop execution of time countdown
             return;
         }
     },1000);
@@ -48,42 +47,35 @@ function answerQuestion(event){
     
     button1.innerHTML = quiz[k].option1; // Create button for option 1 and insert content
     choices.append(button1);
-    button1.setAttribute('data-state','bttnOption');
         
     button2.innerHTML = quiz[k].option2; // Create button for option 2 and insert content
     choices.append(button2);
-    button2.setAttribute('data-state','bttnOption');
 
     button3.innerHTML = quiz[k].option3; // Create button for option 3 and insert content
     choices.append(button3);
-    button3.setAttribute('data-state','bttnOption');
     
     button4.innerHTML = quiz[k].option4;// Create button for option 4 and insert content
     choices.append(button4);
-    button4.setAttribute('data-state','bttnOption');
 
     var correctAnswer = 0;
     var wrongAnswer = 0;
     var userChoice = [button1, button2, button3, button4];
-    var paraEl = document.createElement('p');
     
     userChoice.forEach(function(elem){
         elem.addEventListener('click',function(){
             if (elem.textContent === quiz[k].correctAnswer){
-                paraEl.innerText = "Correct. Congratulations!"
+                feedback.innerText = "Correct. Congratulations!";
                 correctAnswer ++;
                 console.log('Total correct answers:' + correctAnswer);
                 } else {
-                paraEl.innerText = "Wrong!";
+                feedback.innerText = "Wrong!";
                 timeLeft = timeLeft - 10;
                 wrongAnswer ++;
                 console.log("Total wrong answers: " + wrongAnswer);
             }
-            questions.appendChild(paraEl); // Put the "p" element to the end of id "questions"
-            setTime(paraEl);
+            setTime(feedback);
             
             k ++;// Increase the value of k to switch to new Question
-            console.log(k);
             // Add if conditional statement to break this loop when all questions have been shown and answered
             // The "questions" div is hiden, and the "end-screen" div is shown.
             if (k === quizLength) {
@@ -131,4 +123,5 @@ function setTime(i){
             i.setAttribute('class','hide');
         }
     },1000)
+    return secondLeft;
 }
