@@ -9,6 +9,8 @@ for (let i = 0; i < lastHighScores.length;i++){
     highScoresList.append(liElem);    
 }
 clear.addEventListener('click',function(){
-    highScores.innerHTML = "";
-    localStorage.clear();
+    while (highScoresList.hasChildNodes()){
+        highScoresList.removeChild(highScoresList.firstChild);
+    }
+    window.localStorage.clear("highScores");
 })
