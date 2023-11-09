@@ -35,44 +35,37 @@ function answerQuestion(event){
             return;
         }
     },1000);
-    // Hide start-screen div
-    startScreen.setAttribute("class",'hide');
     
-    // Show questions div
-    questions.setAttribute('class','start');
+    startScreen.setAttribute("class",'hide');// Hide start-screen div
     
-    // Display the question from quiz
-    userQuestion.innerHTML = quiz[0].input;
+    questions.setAttribute('class','start');// Show questions div
+    
+    var k = 0; // k indicates the question number in "quiz" array
+
+    userQuestion.innerHTML = quiz[k].input;// Display the question from quiz
     questionTitle.append(userQuestion);
     userQuestion.setAttribute('class','start');
     
-    // Create button for option 1 and insert content
-    button1.innerHTML = quiz[0].option1;
+    button1.innerHTML = quiz[k].option1; // Create button for option 1 and insert content
     choices.append(button1);
     button1.setAttribute('data-state','bttnOption');
         
-    // Create button for option 2 and insert content
-    button2.innerHTML = quiz[0].option2;
+    button2.innerHTML = quiz[k].option2; // Create button for option 2 and insert content
     choices.append(button2);
     button2.setAttribute('data-state','bttnOption');
 
-    // Create button for option 3 and insert content
-    button3.innerHTML = quiz[0].option3;
+    button3.innerHTML = quiz[k].option3; // Create button for option 3 and insert content
     choices.append(button3);
     button3.setAttribute('data-state','bttnOption');
     
-    // Create button for option 4 and insert content
-    button4.innerHTML = quiz[0].option4;
+    button4.innerHTML = quiz[k].option4;// Create button for option 4 and insert content
     choices.append(button4);
     button4.setAttribute('data-state','bttnOption');
 
-    var k = 0; // k indicates the question number in "quiz" array
     var correctAnswer = 0;
     var wrongAnswer = 0;
     var userChoice = [button1, button2, button3, button4];
     var paraEl = document.createElement('p');
-    var userRecordName = [];
-    var userRecordResult = [];
     
     userChoice.forEach(function(elem){
         elem.addEventListener('click',function(){
@@ -87,10 +80,9 @@ function answerQuestion(event){
                 console.log("Total wrong answers: " + wrongAnswer);
             }
             questions.appendChild(paraEl); // Put the "p" element to the end of id "questions"
-            // paraEl.setAttribute('class','feedback');
             setTime(paraEl);
-            // Increase the value of k to switch to new Question
-            k ++;
+            
+            k ++;// Increase the value of k to switch to new Question
             console.log(k);
             // Add if conditional statement to break this loop when all questions have been shown and answered
             // The "questions" div is hiden, and the "end-screen" div is shown.
@@ -100,9 +92,6 @@ function answerQuestion(event){
                 clearInterval(timeInterval);
                 finalScore.innerHTML = timeLeft;
                 time.innerHTML = timeLeft;
-                userRecordResult.push(timeLeft);
-                localStorage.setItem("result", timeLeft);
-                console.log("Final value of timeleft: " + timeLeft);
                 return;
             }
             userQuestion.textContent = quiz[k].input;
@@ -115,7 +104,7 @@ function answerQuestion(event){
 
     submitButton.addEventListener('click',function(event){
         event.preventDefault();
-        var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+        var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
         var names = initials.value.trim();
         console.log(names);
         
@@ -124,14 +113,12 @@ function answerQuestion(event){
             initials: names
         };
         
-        highscores.push(NewScore);
-        // userRecordName.push(names);
-        
-        localStorage.setItem("highscores", JSON.stringify(highscores));
+        highScores.push(NewScore);
+               
+        localStorage.setItem("highScores", JSON.stringify(highScores));
         window.open('highscores.html');
     });
 };
-
 
 // Function to set time of the notice "Wrong!" or "Correct. Congratulations!" if their answer is correct or not
 function setTime(i){
