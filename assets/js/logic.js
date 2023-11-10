@@ -17,21 +17,25 @@ var button2 = document.createElement('button');
 var button3 = document.createElement('button');
 var button4 = document.createElement('button');
 
-// Show time left for answering and show countdown
-var timeLeft = 120;
+var timeLeft = 120; // Show time left for answering and show countdown
 var time = document.querySelector('#time');
 time.innerHTML = timeLeft;
 
 startButton.addEventListener('click',answerQuestion);
 
-function answerQuestion(event){
+function answerQuestion(){
     // Set coundown function
     var timeInterval = setInterval(function(){
         timeLeft--;
         time.innerHTML = timeLeft;
         if (timeLeft === 0){
             clearInterval(timeInterval); // Stop execution of time countdown
-            return;
+            return [
+                endScreen.setAttribute('class','start'),
+                questions.setAttribute('class','hide'),
+                finalScore.innerHTML = timeLeft,
+                time.innerHTML = timeLeft
+            ];
         }
     },1000);
     
@@ -57,25 +61,20 @@ function answerQuestion(event){
     button4.innerHTML = quiz[k].option4;// Create button for option 4 and insert content
     choices.append(button4);
 
-    var correctAnswer = 0;
-    var wrongAnswer = 0;
     var userChoice = [button1, button2, button3, button4];
     
     userChoice.forEach(function(elem){
         elem.addEventListener('click',function(){
             if (elem.textContent === quiz[k].correctAnswer){
                 feedback.innerText = "Correct. Congratulations!";
-                correctAnswer ++;
-                console.log('Total correct answers:' + correctAnswer);
                 } else {
                 feedback.innerText = "Wrong!";
                 timeLeft = timeLeft - 10;
-                wrongAnswer ++;
-                console.log("Total wrong answers: " + wrongAnswer);
             }
             setTime(feedback);
             
             k ++;// Increase the value of k to switch to new Question
+            console.log("Question number: " + k);
             // Add if conditional statement to break this loop when all questions have been shown and answered
             // The "questions" div is hiden, and the "end-screen" div is shown.
             if (k === quizLength) {
@@ -93,7 +92,6 @@ function answerQuestion(event){
             button4.textContent = quiz[k].option4;
         })
     })
-
     submitButton.addEventListener('click',function(event){
         event.preventDefault();
         var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
@@ -104,7 +102,6 @@ function answerQuestion(event){
             score: timeLeft,
             initials: names
         };
-        
         highScores.push(NewScore);
                
         localStorage.setItem("highScores", JSON.stringify(highScores));
