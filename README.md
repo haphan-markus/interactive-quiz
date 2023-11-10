@@ -28,26 +28,27 @@ SO THAT I can gauge my progress compared to my peers
 
 ## Usage
 
-The deployed website link: 
+The deployed website link: https://haphan-markus.github.io/interactive-quiz/ 
 
 ## Visual
 
 Browser user interface:
-![Alt text](image1.png)
+![Alt text](./assets/screenshots/image1.png)
 
 An example of the final interface when all questions are answered:
-![Alt text](image2.png) 
+![Alt text](./assets/screenshots/image2.png) 
 
 Upon clicking the "Submit" button, the score and initial are stored into the local storage and displayed in the HighScores html:
-![Alt text](image3.png)
-![Alt text](image4.png)
+![Alt text](./assets/screenshots/image3.png)
+![Alt text](./assets/screenshots/image4.png)
 
 The user can continue to retake the quiz, and the new score and intial can be stored and added up into the HighScores html:
-![Alt text](image5.png)
-![Alt text](image6.png)
+![Alt text](./assets/screenshots/image5.png)
+![Alt text](./assets/screenshots/image6.png)
 
 The quiz is stopped when the user answers all questions, or if the timer reaches zero:
-![Alt text](image7.png)
+![Alt text](./assets/screenshots/image7.png)
+
 Everytime the user moves to a new question, the question number will be logged into the console log. In this case, the console log is empty, indicating that there is no question answered.
 
 ## License
